@@ -1,5 +1,7 @@
 # LP3 DAA, ML & Blockchain Technology Codes
 
+# Note :- Run and test By Yourself If any Error Found contact 
+
 This repository contains a complete collection of **LP3 practical programs**, including:
 
 ✅ **Machine Learning Codes** (Python + Jupyter)
