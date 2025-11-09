@@ -1,37 +1,34 @@
+//Student Details
+
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.30;
 
-contract student {
-
+contract StudentMarks {
+    // Structure to store student details
     struct Student {
+        uint256 stud_id;
         string name;
-        uint256 rollno;
+        uint256 marks;
     }
 
-    Student[] public studentarr;
+    // Array to store multiple students
+    Student[] private students;
 
-    function addStudent(string memory name, uint rollno) public {
-        for (uint i = 0; i < studentarr.length; i++) {
-            if (studentarr[i].rollno == rollno) {
-                revert("rollno already exists");
-            }
+    // Function to add a new student
+    function addStudent(uint256 stud_id, string memory name, uint256 marks) public {
+        require(marks <= 100, "Marks must be between 0 and 100");
+        students.push(Student(stud_id, name, marks));
+    }
+
+    // Function to calculate and return average marks
+    function getAverageMarks() public view returns (uint256) {
+        require(students.length > 0, "No students found");
+        uint256 total = 0;
+
+        for (uint256 i = 0; i < students.length; i++) {
+            total += students[i].marks;
         }
-        studentarr.push(Student(name, rollno));
-    }
 
-    function getStudentsLength() public view returns (uint) {
-        return studentarr.length;
+        return total / students.length;
     }
-
-    function displayAllStudents() public view returns (Student[] memory) {
-        return studentarr;
-    }
-
-    function getStudentsByIndex(uint idx) public view returns (Student memory) {
-        require(idx < studentarr.length, "index out of range");
-        return studentarr[idx];
-    }
-
-    fallback() external payable {}
-    receive() external payable {}
 }
