@@ -268,6 +268,5 @@ jupyter notebook
 
 # ✅ Author
 
-Developed as part of **LP3 DAA & Machine Learning**
-
+## Shrihari Suresh Kasar
 ---
